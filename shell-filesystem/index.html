@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.3.3"/><meta data-react-helmet="true" name="description" content="A look into what a shell and filesystem is and looks like"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="Shell&amp;Emacs Filesystem"/><meta data-react-helmet="true" property="og:description" content="A look into what a shell and filesystem is and looks like"/><meta data-react-helmet="true" property="og:image" content="/static/97038dbe122b284786fd68a47688e28c/terminal.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="Shell&amp;Emacs Filesystem"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="Shell&amp;Emacs Filesystem"/><meta data-react-helmet="true" name="twitter:description" content="A look into what a shell and filesystem is and looks like"/><meta data-react-helmet="true" name="twitter:image" content="/static/97038dbe122b284786fd68a47688e28c/terminal.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="canonical" href="https://jlee0810.github.io/shell-filesystem/" data-baseprotocol="https:" data-basehost="jlee0810.github.io"/><title data-react-helmet="true">Shell&amp;Emacs Filesystem</title><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 13ku56z">.css-13ku56z{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100%;}</style><main class="css-13ku56z e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:225px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;225&#x27; width=&#x27;225&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC60lEQVR42oXUW0/TUADA8X4HZODaja47bdfL6el6Ox1kSkQRvCAYE2JI8B5jNIZ4eeBFiUYTFGHGK6CImzAiPKnEN/DdoAO8JDKR6AsxgZDxSpipBZ1kSPN/avI7PSfn9BDZbHZ5eTmbzWYymal0+svU1H+aSqfn5uazqw/h4r7kwO7a/XZ064ZV7am5c/deJpNZwb3xBCNIghqGuiFrGySqGispV65dX1paIhYWFrZVVUthDekRqGEVWyq2kGkhE+dNtWyom5Et5WNjY8Snz5+RaUENW5WaFjWEkC0ptmJayLIUI3/IxLJmDA4NEZMfPiqmKQj2gRvsxU+e+hiI1itQs0TZGWI9LKpaf3LAwdAwYRjjXWptK3XydVHTW8+Jl1RVkwDDGJn5sYDC/ckkMTE5KWsGsixRjDB+HUbBwW6yZa7g1IgHcJKyPn7W1+dgqBuSgiuOwTOj1IVJz+k3xXWtlLab8QcAK0p5cUhR44kEMT4xAQ1dFO19l9nGZFGkngEyIL0cRXE0y5YEASvKeXHv0ziRGp+QwjoyMdQNny9EetkShg1wbIBlaeD020uKiXMxr6g9T3qJ1Pi4FNbdV4qhB0M8DYDL3JyBOMBDydn/1SPAQ/TocQ/xPuVgZOA/G8hwfEnwr/f5nSWQJBtgZFGyoYpVC/My6up+tIJzpwRzfZBF2xmzLmDUMPpeuqyexzs1ZER4iDq7uol3qZSD/12S+30aAD/NHX+x+dLPTc3fCpunC1vmC2qu+ligCyp60Nm5Ou0c/M/8GWDUBMoO0aUNdKSBjh6mlXKGZvigIN5/+JD4/v2HhiPuoc/rKYqlSG4lL+enOYbj/Uzw+eCg80uePXfeBzjNLlUtO7cwjiiGBQSB4bkgz68W8njJyqrqmZkZB8/OzjYeOQpEOShIawKiHOCFItLn2ex18pLFlK9iR+XI6KhzGbh30OLi4qvh4Y7Y7faO2Jo6YrFb7e0329rc4onE1+lp9xr6BTiehkRldvzeAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/97038dbe122b284786fd68a47688e28c/d66a6/terminal.webp 56w,/static/97038dbe122b284786fd68a47688e28c/a72fd/terminal.webp 113w,/static/97038dbe122b284786fd68a47688e28c/1cf63/terminal.webp 225w" sizes="(min-width: 225px) 225px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 225px) 225px, 100vw" decoding="async" loading="lazy" data-src="/static/97038dbe122b284786fd68a47688e28c/5371e/terminal.png" data-srcset="/static/97038dbe122b284786fd68a47688e28c/24271/terminal.png 56w,/static/97038dbe122b284786fd68a47688e28c/39d80/terminal.png 113w,/static/97038dbe122b284786fd68a47688e28c/5371e/terminal.png 225w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/97038dbe122b284786fd68a47688e28c/d66a6/terminal.webp 56w,/static/97038dbe122b284786fd68a47688e28c/a72fd/terminal.webp 113w,/static/97038dbe122b284786fd68a47688e28c/1cf63/terminal.webp 225w" sizes="(min-width: 225px) 225px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 225px) 225px, 100vw" decoding="async" loading="lazy" src="/static/97038dbe122b284786fd68a47688e28c/5371e/terminal.png" srcSet="/static/97038dbe122b284786fd68a47688e28c/24271/terminal.png 56w,/static/97038dbe122b284786fd68a47688e28c/39d80/terminal.png 113w,/static/97038dbe122b284786fd68a47688e28c/5371e/terminal.png 225w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau3"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau2"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">Shell&amp;Emacs Filesystem</div><style data-emotion="css 17l0q6x">.css-17l0q6x{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-17l0q6x{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;line-height:1.5;}}</style><div class="css-17l0q6x e1st1jau0"><div>CS35L / shell / emacs / filesystem</div><div>2022.01.21.</div></div></div></div><style data-emotion="css uo146q">.css-uo146q{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:100px 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-uo146q p{padding:3px 0;}.css-uo146q h1,.css-uo146q h2,.css-uo146q h3{font-weight:800;margin-bottom:30px;}.css-uo146q *+h1,.css-uo146q *+h2,.css-uo146q *+h3{margin-top:80px;}.css-uo146q hr+h1,.css-uo146q hr+h2,.css-uo146q hr+h3{margin-top:0;}.css-uo146q h1{font-size:30px;}.css-uo146q h2{font-size:25px;}.css-uo146q h3{font-size:20px;}.css-uo146q blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-uo146q ol,.css-uo146q ul{margin-left:20px;padding:30px 0;}.css-uo146q hr{border:1px solid #000000;margin:100px 0;}.css-uo146q a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-uo146q pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-uo146q pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-uo146q code[class*='language-'],.css-uo146q pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-uo146q{width:100%;padding:80px 20px;line-height:1.6;font-size:14px;}.css-uo146q h1{font-size:23px;}.css-uo146q h2{font-size:20px;}.css-uo146q h3{font-size:17px;}.css-uo146q img{width:100%;}.css-uo146q hr{margin:50px 0;}}</style><div class="css-uo146q e1ijh0y10"><h1>Lecture 1</h1>
+<h2><strong><strong><strong><strong><strong><strong>Shell</strong></strong></strong></strong></strong></strong></h2>
+<p>sh - shell  and emacs</p>
+<p>Shell is a little program that wraps over the OS. The shell itself doesn’t know much. The shell gives an interface into the OS.</p>
+<p>You talk to the shell by text strings and gives back a response. All the real work is done by the operating system.</p>
+<p>Shell - <strong>Glorified language processor</strong></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 704px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/9be05dc6a55bb5c46fa0e6d69e6d766b/3be76/Untitled.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACM0lEQVR42kVSa3OaQBTlV6dJIw+FXQHTD820E0cUeS0rCFRBHhJtftrp7NKmH87cO7Oz53HvVT6qF3yUK9xyB++5g1vuyjocbFy5jZ7beM9dXDMbHaef7/fiG275CzrmYMxWGLiLnjlQ7pmNMbNxOzqyjrmDPqVoGZEQRL/LFT6qFW6Fi3uxwpg5UmTMXLTMxjkkUrhlSyhNMMd4WEoM6RJX/r8KgY4RdAmZRAsXt6OLgduoQyIJm4TiHFro2FK6VdrYxDWlGBidnKUEl8RCzwjuwnVu4xITKSL6MVviKgxkDsaDjSYmaCKCyjdRBwRKEy7QJRbOewPVTsclIagjUzq+i5ke7UkosdAyE+dgjso3UGx1FL4h+0tsoUvoNMPSm6EODJx8HdHrFxzWz8jWKk77OS7RAkNK5YfhQNGlFoaUoA5NnIKFjNnEFtpEJLAllGqnotrO0IRz8PUTgu8PiH88Ivd08PUMp/1CfmhiE5mn4uhpEtVujuNGQ7kz0MUUnRiZWMovX5Puqq0K/vaI8PUBfP0sI5W+IaOOYgmBgXyjovB0lFtBqiLbaGBvX5FvNDRiMYkDpfImdyKeIP/l62gTE30qToHKqAOnqKMFMm+G3NOkYPT6iFLMPDbRRBb6RMyZQhFDvkRzSXryNVl7Zv0FQZcSeTptbCH3VKRvzxLJzycUnoYmmpY6MII6tqDUex1NZEhXAuKx+0fIrcklp5L8JJIw+nmbwpk4MdGLSziHJv4AvStyzVwR1voAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/9be05dc6a55bb5c46fa0e6d69e6d766b/a59e9/Untitled.webp 192w,
+/static/9be05dc6a55bb5c46fa0e6d69e6d766b/0ca9f/Untitled.webp 384w,
+/static/9be05dc6a55bb5c46fa0e6d69e6d766b/79f11/Untitled.webp 704w"
+              sizes="(max-width: 704px) 100vw, 704px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/9be05dc6a55bb5c46fa0e6d69e6d766b/3b721/Untitled.png 192w,
+/static/9be05dc6a55bb5c46fa0e6d69e6d766b/66595/Untitled.png 384w,
+/static/9be05dc6a55bb5c46fa0e6d69e6d766b/3be76/Untitled.png 704w"
+            sizes="(max-width: 704px) 100vw, 704px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/9be05dc6a55bb5c46fa0e6d69e6d766b/3be76/Untitled.png"
+            alt="First ss"
+            title="First ss"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>These command line interfaces are scriptable; makes it better the GUI</p>
+<p>rm -rf (delete everything in the home directory)</p>
+<p>emacs - GUI</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">M-x shell RET (brings up the command line) </code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 463px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/00d19b6be4be8317ef457059385bbc3f/11b02/Untitled_1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACR0lEQVR42k2SWW/aQBSF+bl9iBLCGmNjG2iatH2o2gQIq/EGBmMW2yzZpdD/9bUzUKkPVxrfkc899zuT2boGG0dn41ZJT7V2NJajCqlrsLJUViOFxVBhNarI89JSmHWLBJ08QTuH18oS9q9kZbaegRR1dVKnSuJUWdsafusS9z6LfZel/f0Tk4ciq5HKvF8kGpQIOgX8Zh73/lzWrFciGpT/E3QMUlcncavEdoWwV8Jr5pgPyvjtAsuRwrxflt/TTp5xM0fYLRH2S3LApF1g2i2Q2fnmyaHBxtNJPZ1YrDxUmPZKTDp5Bj/OsO/O8FqXDH+eY/26IHgoSOGoX2ZpVaQ7v50ls/UNpEtPOFRJXJWVpRB0i/itPEtLZfJQwGte4LdzkpNwKdaPhkdugunqxDWz9Ux2/knM0YhtjcTWWNoqQacogYtVZCC2RuoJzsfBoi+GxY7KelQh7AuG46OYsBz2ykQDBb+Zk5CFi39ia7tK6hmSsRAU3Jz7rFx9MTi+gPlApqyz93U2nsrO1xEIUr/KbmLKn7d+TXIVjtbCma2QuILZlQxCvIi1fFZlFpYiGOo8BiZPs9qp6jxOTXYTnf1Y42laYzM22I112d8HBvupycbX5ZqzfpG1XZEcRZiZ16jBW/SZ16jOy7whRZ9Dk7eowbu4m9d5X1zzEtZ4ntV5Ceuy9zwTzjU24yr7wJR3r2GDzCH+gqzkhkN8y0d8w0d8yyH5yu/0G4fklrflNU/zOvtZXTo/BqOzcjQWowoLSwSiMPmb8h9vzWbkU1LGfwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/00d19b6be4be8317ef457059385bbc3f/a59e9/Untitled_1.webp 192w,
+/static/00d19b6be4be8317ef457059385bbc3f/0ca9f/Untitled_1.webp 384w,
+/static/00d19b6be4be8317ef457059385bbc3f/fb1d9/Untitled_1.webp 463w"
+              sizes="(max-width: 463px) 100vw, 463px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/00d19b6be4be8317ef457059385bbc3f/3b721/Untitled_1.png 192w,
+/static/00d19b6be4be8317ef457059385bbc3f/66595/Untitled_1.png 384w,
+/static/00d19b6be4be8317ef457059385bbc3f/11b02/Untitled_1.png 463w"
+            sizes="(max-width: 463px) 100vw, 463px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/00d19b6be4be8317ef457059385bbc3f/11b02/Untitled_1.png"
+            alt="Second ss"
+            title="Second ss"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>See what files we have in the home directory</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">C-x d RET (See what is in my directory)</code></pre></div>
+<p>Directory is kind of like a file but not content but lists of files</p>
+<p>Generally form a tree structure. They have a root directory, and underneath that more directories, etc.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 475px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ee2b6f6120d31bce3933f13c3013174b/abae4/Untitled_2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 87.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAADkElEQVR42l2UWXPiVhCF9SdTeUiqplIVx2ODBLJWFi94ZuKZOIPNJtCKQLuEWYw9iSc/7qS6IS95uHWl4uq7p/ucRvhefsQ/xQd8z2/wlvXwlt9iu+hgPW/hJb7Ga3SFl+U1nheX2IYdPC+62NHvQRsrz8TKN/Hkt3kvPB3CW3GLt/wD/s56vP6KeyhdA6Wro3INhlSuidI1EU8VZLaGyjNQeSYqV+dzhWeg9AxktgrhLbs5gNIevqU3eI0u+ePCMbAcyawmsxW4fRHBsAn/QUI61ZDaGla+wZfnDDaQWAqEb+kV9stLvCY9PPkm9ss29lEX++WhtE3Q4nJIwWbexiowUAU60pmKlaOjtA3ktobS0RGNVQi7sIvCMRFbKuKJjG3YZhjtladh7RkoZipKT8WTb/AqXY0rIEg2u0BiXSB3NMwfmxDo9miioHB0VvjMsA5yx8QmbGG3aGMzp+arqDwVK09D4akoXAWloyCbyUgsGblzAffPcwglN1znG+KJcgS2kXMpBDBQ2BeIrCZKR2VFBMltUqUinclIpzKrte/PIOzjK7xEl3iOunheXmFHsaCyyYypjNzVULkarC/nGP/+G9z7c25NbNFqILZEJOMGSpvOnEDYM6iDzaLDsHXY4T5VrsrubkKT3+k5eBThP4hIpgdV0VhCOKhjOZJQOBpGd79CIHW7ZQfbRZvDnDsKNvMWZy2ZKnyw8DV2N5k2sRxLKGyV+xZPGnC/kuImClvB8NMJhJdjPHbH6SjcCzwRgJrvkLs6u5o5KqIJARuY/XGK/vU7WHcnCB5qrJQuefxIJR+BZATljNStA+MA9TXktozMlrEYigiHIgPt+/eYfTmF1z/D/LHGSgn4cPvL/4EtbAITa8qbp3HT02mTHaU9Iac9FfOBdICP6rA+n8J/rLHz/d47CFuCzFt4oqzRFPg6f0SZS2dNJLbMvUs5KgqicR3hQIL79T3CwTkWQ4mVuv0z3LV/pklpc0xI4ZoDrHOpK4ZqHJtkJiOayKzKH9S4b+TuwWER4aAG7+EcPf0HAv5XroF1YHLvqqNCyl88bXLmFqMGgkGd391+Hf4RSuUGgxrCkYi7S1bYwjY8GLEO9CNQ4xyuaBKmTUSTBsKRhPlQRDQWsRjWeSWWxM6H9Dxt4HP3JwIa2M5NbMjZQOd/ElJGY0azms9UXpmjHLMncagTmpKJiGhyuCS1JHxq/4h/Aej2zaqBDfXcAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/ee2b6f6120d31bce3933f13c3013174b/a59e9/Untitled_2.webp 192w,
+/static/ee2b6f6120d31bce3933f13c3013174b/0ca9f/Untitled_2.webp 384w,
+/static/ee2b6f6120d31bce3933f13c3013174b/69f92/Untitled_2.webp 475w"
+              sizes="(max-width: 475px) 100vw, 475px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/ee2b6f6120d31bce3933f13c3013174b/3b721/Untitled_2.png 192w,
+/static/ee2b6f6120d31bce3933f13c3013174b/66595/Untitled_2.png 384w,
+/static/ee2b6f6120d31bce3933f13c3013174b/abae4/Untitled_2.png 475w"
+            sizes="(max-width: 475px) 100vw, 475px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/ee2b6f6120d31bce3933f13c3013174b/abae4/Untitled_2.png"
+            alt="Third ss"
+            title="Third ss"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">rm *.pdf (removes all pdf files in the current directory)</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">rm * .pdf (removes all files in the home directory and then a file called .pdf</code></pre></div>
+<p>To test a shell command</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">echo rm * .pdf (see what the command will do without actually doing it)</code></pre></div>
+<p>This will show the output of what the program/command you’re going to execute would do in this case delete</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">rm -rf </code></pre></div>
+<p>-r  (recursive)</p>
+<p>-force (have no permission but you want to proceed with the command)</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">mkdir trash
+echo mv *.pdf trash
+mv *.pdf trash</code></pre></div>
+<p>Now all the files moved from the home directory into the trash directory. Now we can navigate to the trash and see all the pdf files</p>
+<h2>Buffer</h2>
+<ul>
+<li>We want our apps to survive power outages and survive OS crashes</li>
+<li>We want our apps to be fast</li>
+</ul>
+<p>These two goals compete with each other</p>
+<ul>
+<li>We want our apps to be understandable</li>
+</ul>
+<p>First goal - persistent storage</p>
+<p>To also attack the second goal - have a cache or a buffer in emacs of what’s in storage</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">C-x C-f FILENAME RET</code></pre></div>
+<p>Emacs is modifying its buffer but the file hasn’t been created/saved yet</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">C-x C-s</code></pre></div>
+<p>Writes/saves the file</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">C-x b NAME RET</code></pre></div>
+<p>b means to switch the buffer</p>
+<p>What is in the buffer doesn’t match persistent storage</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">C-x C-b </code></pre></div>
+<p>Lists the buffers</p>
+<p>The above command lists the buffers (or arrays of memory) - may correspond to a file. The other buffers are not associated with files, instead they’re arrays of text associated with emacs. When you exit emacs, those buffers will go away. Any work in there would be discarded</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">ls -l output column 1</code></pre></div>
+<p>“-” refers to a regular file, “d” refers to a directory “&#x26;” refers to a symbolic link</p>
+<p>The contents of a symbolic link is treated as a file name by the operating system</p>
+<p>Name of top level directory is /  (root). In root, bin is a symbolic link for usr/bin. So whenever you use bin it’ll automatically go to usr/bin.</p>
+<p>Column 1 :</p>
+<p>Column 1 is the filetype. Columns 2-10 in have something like “rwxr-xr–”. These can be broken up into sets of 3.
+These are permissions for which group has over this file. First 3 is for user (file owner). Second 3 is for group (group owner). Third 3 is for other (everyone else)</p>
+<p>Permissions: r - read w - write x - execute</p>
+<p>Column 2:</p>
+<p>File system usually thought about as a tree, but filesystem can be a graph.</p>
+<p>Files can exist in several different directories or in different places in the same directory.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">cd (change directory)
+cd /usr/bin
+mkdir e
+mkdir f 
+mkdir e/g</code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 284px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/5e814670f0be971bbc75b7361dd4725b/18db4/Untitled_3.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 80.20833333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAADJ0lEQVR42kWTWW/iWBSE/V9noul0TBw2Gy9AXlrqbmmSIYDDYrz7GhswS9g703+tRue40/Nw5Csk6n6nqq60dnVsXB1bT8fGN7D1TGz5Nw35axWFo8J9uuXvclxDaitIh/cQfRlxX4b/9AnBP3fIXxVcEgPSaqaDRNeejqXfwto1sHUNZKM68kkDS8eA/fUvOE+3CF5kjL7+iZCEnm/5LAYK9r6OU9TCj9SCtHJVLF0NK1djsZWjQdg1+M8ygl4F4YuMpaNi47Wwj9rYeDq2gYad12Sqc2jgXXRwjdt4T7uQCreJzGkgm9axcFQI+wELR8NiqmIxbSAb1xD3K1g5Kra+gV1gYhfo2AUqDrGOq7BwTUxcEws/592ScD6pYT6pQ4xqEMMqllMSbDJZYjcx+/sO+biJt9BiwbfAwiEycYxNnGILV2Hw/My7kOiPROf3ZAy+/AH/uQL3+Q7zURXitQqvp2D45QapXcNq9j/lW2hgH+k4xhYuRChM/Jt1IGXjBnKis6twezKiwQOWMxXLWZN9zRwVQU9mQSImC6gN5CX7Gpo4RSYuiYX3rA1p6TQhbAXRi4zZ02eMv39Caj9wTbJxHcFARuG1sA1MrGYak9OZK+bT+jqOUenlj7QNieiSocI3z8d1hIMHxAMFhaNxdYL+HYfzERDVa0dehhZ7ug91nJNWGQ7VRtj3WDktDiTsV3ht8nUxrWE+ekA6qjJVPqmhcDVsAqMUikz+UjjnxMQpaeMiTEjZpAExVHjd0fcbDKmsrzUUM5XFFjOVqchPCoVW3Uel0CGyOBQSPMYGzsKAVAQGclrJaSIaKrC/3cDpfUY6oj42ULilIL2mwm0xIRWchGgOPETYwlnokNa+DgqGBIN+Bf6LwqWmYGjltdfCxi/F1r/eOwmWhB9j/CI0IVFihacxUTy4xyYob6VLkuE9J/o7VTqTb3GH6fbUxdAoBdlHExK/T19Hxi+lik2o85qJrbBvvxONOniL2nz+ECS6Pb8YC2dRjnRKHrn9NPm0iXxaZ7pdYPFqO060g2PyiEPcxT7u4Jw+4pJ2ONmzaOM67+I9f+T5DwOob/bXgbYtAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/5e814670f0be971bbc75b7361dd4725b/a59e9/Untitled_3.webp 192w,
+/static/5e814670f0be971bbc75b7361dd4725b/951e3/Untitled_3.webp 284w"
+              sizes="(max-width: 284px) 100vw, 284px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/5e814670f0be971bbc75b7361dd4725b/3b721/Untitled_3.png 192w,
+/static/5e814670f0be971bbc75b7361dd4725b/18db4/Untitled_3.png 284w"
+            sizes="(max-width: 284px) 100vw, 284px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/5e814670f0be971bbc75b7361dd4725b/18db4/Untitled_3.png"
+            alt="Fourth ss"
+            title="Fourth ss"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">echo my txt >e/foo</code></pre></div>
+<p>“>” output of everything before it sent to the file after it. (now we have a new file foo in directory e that has “my txt”).</p>
+<p>Now we can make another name for that same file:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">ln e/foo e/bar
+ls -l e/foo e/bar (we can see that it is the same file)
+ln e/foo e/g/foo
+ls -l e/foo (became 3 links)
+ln e/g/foo f/baz
+ls -l f/baz (4 links)</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">cat a b c</code></pre></div>
+<p>cat or “concatenate” prints out the contents of all the files supplied. If we supply any of the names of the links we created, it’ll print the same text because it’s all really just one file.</p>
+<p>Column 2:  Is the hard link count</p>
+<p>Column 3: Owner</p>
+<p>Column 4: Group</p>
+<p>Column 5: # Bytes</p>
+<p>Column 6-8: Last modified time</p>
+<p>Column 9: name or name - > contents</p>
+<p>Command “DU” recursively links through directories and prints out file names. If we allowed links back to parents, then DU would cause problems. No hard links to directories.</p>
+<p>Terminology “/” root directory “.” current directory “..” parent directory</p>
+<p>Hardlink is a clue to you how many pointers are pointing to the file</p>
+<p>How does etc directory have 143 links? etc contains all the miscellaneous files where we don’t know where to put them. Every sub directory has a pointer to itself, and then a pointer from the parent of that sub directory. So # of sub directories is # of links - 2</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 744px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/75a0a65de539a8f50dc064cce8d60d22/134e0/Untitled_4.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 38.020833333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0klEQVR42jWRXVPTQBiF89+81wtEgV7oDDeASNOkTdJ8tIiOVkf6Bf3cJE1aSJuWUgrjjP/ucXbBizNnZ3feZ8/Z1RruRy6sAr55gKu/xzP28MwDArNAzdgnMPapGXtUi++wi7v4cq3vYn/ewTx+w2HhFaWj17jFtzhnO2hp12TSKSGaJcaXFUTLJu44pF2LpGMwaZeIW/JMRzSLhE2d4e9Trn8c02uc0PA/cHl+yKBxwvDXJ7TNJGAd+9z0HdaTBn/zK/7cttjEF2wmPo/TOpvEZxV5SsvIJRtYJF0T0TwjaheJ2jpJ12AxtNCWoUsuqiTdCsvxV3LxjVX4nfmoziqsche53A4tsqHFfGSThy6z6zJh60yBJDDu6GQDk9u+iSaHFiOHfFwlvXIYXZqsRI1ceCxGNjf9MlHHYNYrMx87LEOPbGg/w8eO8vnIIhuUlbSFcIhaRXo/TxFNneSqrNLIFGmnpBLKwVXoso5l7apKLpsthUMuHBYKLBtU0LKXFLNrU73N/7RZ31KQbRLwkATcT/xnxR7r2FW6k/BIpn4BCxttm9Z5SGtskpry7bSO3JP+dPOFx9k5T7Nz9TmP02ffTmts04CHNOA+CViryzzV4B9bBahGbCnK1gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/75a0a65de539a8f50dc064cce8d60d22/a59e9/Untitled_4.webp 192w,
+/static/75a0a65de539a8f50dc064cce8d60d22/0ca9f/Untitled_4.webp 384w,
+/static/75a0a65de539a8f50dc064cce8d60d22/eb2f9/Untitled_4.webp 744w"
+              sizes="(max-width: 744px) 100vw, 744px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/75a0a65de539a8f50dc064cce8d60d22/3b721/Untitled_4.png 192w,
+/static/75a0a65de539a8f50dc064cce8d60d22/66595/Untitled_4.png 384w,
+/static/75a0a65de539a8f50dc064cce8d60d22/134e0/Untitled_4.png 744w"
+            sizes="(max-width: 744px) 100vw, 744px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/75a0a65de539a8f50dc064cce8d60d22/134e0/Untitled_4.png"
+            alt="Fifth ss"
+            title="Fifth ss"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>You can have a hard link to a symbolic link.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">ls -al (prints out everything such as . and ..)
+ln -s g h (Create a symbolic link h that points to g) 
+ln h i (Create a hardlink to g)
+ls -al</code></pre></div>
+<p>Hard link is another name for same file. Neither one is more important than the other. Symbolic link is a separate entity. It’s a name that gets interpreted. Can think of it like a redirect on websites.</p></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 9w9jmx">.css-9w9jmx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:15px;text-align:center;line-height:1.5;}@media (max-width: 768px){.css-9w9jmx{font-size:13px;}}</style><footer class="css-9w9jmx e1oae0v80">Thank You for Visiting My Blog 😆<br/>© 2022 Made With ❤️‍🔥 by Joonwon (Eric) Lee.</footer></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/shell-filesystem/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-f668921f77cf07fd0638.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-a89bd14110a0b9adcbd3.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-52eb04e0528ca30fc245.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-d9d86de67af944e3ec71.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-5015d46f001fd46b7ef1.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="0c510036e4bfd85c5043";</script><script src="/webpack-runtime-fe8d30f07c17eb5c26eb.js" async></script><script src="/framework-6e68b7056956344bfd29.js" async></script><script src="/app-f668921f77cf07fd0638.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
